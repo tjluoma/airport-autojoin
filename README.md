@@ -20,6 +20,7 @@ The idea is very simple:
 
 	* If we are *not* connected to a Wi-Fi network, scan for local available networks.
 
+
 * Compare available SSIDs against a list of "known SSIDs" (which you have to add to the script):
 	* if none are available, exit
 	* if one is available, try to join it using the `networksetup` command.
