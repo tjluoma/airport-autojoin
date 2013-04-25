@@ -54,6 +54,18 @@ fi
 
 NAME="$0:t:r"
 
+PPID_NAME=$(/bin/ps -p $PPID | fgrep '/sbin/launchd' | awk '{print $NF}')
+
+if [ "$PPID_NAME" = "/sbin/launchd" ]
+then
+		IS_LAUNCHD=yes
+
+		# if this was called via launchd, give it a few seconds for things to happen first.
+		sleep 10
+else
+		IS_LAUNCHD=no
+fi
+
 AIRPORT='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
 if [ ! -x "$AIRPORT" ]
