@@ -41,6 +41,8 @@ and then install [com.tjluoma.on-network-change.plist] to `/Library/LaunchDaemon
 
 ## Authentication ##
 
+The shell script needs to run as root in order to run the `networksetup` command. If you run it via `launchd` as recommended above it will be run as root.
+
 The firs time you run this script, you may be asked to authenticate with a message like this:
 
 <img src='SecurityAgent-434x256.jpg' width=434 height=256 border=0 alt='Security Agent Prompt' />
