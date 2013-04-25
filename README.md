@@ -27,6 +27,17 @@ The idea is very simple:
 
 That's pretty much it.
 
+## launchd ##
+
+This script can be called two ways:
+
+1.	directly through the command line.
+2.	via `launchd` which will automatically run it 
+
+Put the `airport-autojoin.sh` in /usr/local/bin/ 
+and then install [com.tjluoma.on-network-change.plist] to `/Library/LaunchDaemons` (which will make sure that it is run as `root`).
+
+[com.tjluoma.on-network-change.plist]: https://github.com/tjluoma/airport-autojoin/blob/master/com.tjluoma.on-network-change.plist
 
 ## Footnote ##
 
