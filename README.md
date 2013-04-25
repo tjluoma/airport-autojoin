@@ -39,6 +39,14 @@ and then install [com.tjluoma.on-network-change.plist] to `/Library/LaunchDaemon
 
 [com.tjluoma.on-network-change.plist]: https://github.com/tjluoma/airport-autojoin/blob/master/com.tjluoma.on-network-change.plist
 
+## Authentication ##
+
+The firs time you run this script, you may be asked to authenticate with a message like this:
+
+<img src='SecurityAgent-434x256.jpg' width=434 height=256 border=0 alt='Security Agent Prompt' />
+
+If so, just enter your login name and password.
+
 ## Footnote ##
 
 <ol>
