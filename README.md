@@ -32,9 +32,9 @@ That's pretty much it.
 This script can be called two ways:
 
 1.	directly through the command line.
-2.	via `launchd` which will automatically run it 
+2.	via `launchd` which will automatically run it
 
-Put the `airport-autojoin.sh` in /usr/local/bin/ 
+Put the `airport-autojoin.sh` in /usr/local/bin/
 and then install [com.tjluoma.on-network-change.plist] to `/Library/LaunchDaemons` (which will make sure that it is run as `root`).
 
 [com.tjluoma.on-network-change.plist]: https://github.com/tjluoma/airport-autojoin/blob/master/com.tjluoma.on-network-change.plist
@@ -48,6 +48,53 @@ The firs time you run this script, you may be asked to authenticate with a messa
 <img src='SecurityAgent-434x256.jpg' width=434 height=256 border=0 alt='Security Agent Prompt' />
 
 If so, just enter your login name and password.
+
+## Update 2014-11-13
+
+[com.tjluoma.joinwifi.plist](com.tjluoma.joinwifi.plist) is another attempt to solve this problem, but it doesn’t try to get very fancy about it, it just uses a straight up call to tell `airport` to join the strongest Wi-Fi network.
+
+To use this, you only need to use the `com.tjluoma.joinwifi.plist` and if you use the other method, you do not need to use `com.tjluoma.joinwifi.plist`. Pick one.
+
+### Configure
+
+***Important!*** If your Wi-Fi port is _not_ `en0` (it may be `en1` or something else, under odd circumstances)
+you _must_ change this line in `com.tjluoma.joinwifi.plist`:
+
+		<string>en0</string>
+
+
+### Install
+
+Once you have that set correctly, save it to `/Library/LaunchDaemons/com.tjluoma.joinwifi.plist` and make sure that it is owned by `root` with the proper permissions.
+
+Set Permissions:
+
+	chmod 644 /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
+Move file into place:
+
+	sudo mv -vn com.tjluoma.joinwifi.plist /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
+Change owner/group (required by `launchd`):
+
+	sudo chown root:wheel /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
+Load file into `launchd`
+
+	sudo launchctl load /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
+### Uninstall
+
+You can remove the file with two commands:
+
+Remove it from `launchd`:
+
+	sudo launchctl unload /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
+Delete the `launchd` plist:
+
+	sudo /bin/rm /Library/LaunchDaemons/com.tjluoma.joinwifi.plist
+
 
 ## Footnote ##
 
